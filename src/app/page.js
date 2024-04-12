@@ -53,24 +53,30 @@ export default function Home() {
   
 
   useEffect(() => {
-     fetch('https://mypymes-dot-avbulkmiddlewarepoc-dot-bsuite-qa.wl.r.appspot.com/numerotelmex?cvegeo=3105000010366007', {
+     //simple condition for the first time app is loaded
+    //i'm getting an cors error 
+    //I test with postman an also others apis I have on but this service still response with a cors
+    //error 
+    if(bancos.length === 0){
+      fetch('https://dev.obtenmas.com/catom/api/challenge/banks', {
           mode: 'no-cors'
         })
           .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
+            // if (!response.ok) {
+            //   throw new Error('Network response was not ok');
+            // }
             return response.json(); // Parse the response as JSON
           })
           .then(data => {
             // set the state of the data but there is permission of cors block to 
             // localhost:3000 and 3001 so 
-            //setBancos(data);
-            console.log(data)
+            setBancos(data);
           })
           .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
           });
+    }
+    
   },[bancos])
 
   return (
