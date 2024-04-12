@@ -38,22 +38,26 @@ const useStore = create((set) => ({
       "url": "https://firebasestorage.googleapis.com/v0/b/stagingpagatodo-286214.appspot.com/o/Challenge%2Flogo-banregio.png?alt=media&token=ae605bda-5698-4bf8-9639-d4fdc9579b5c"
     }
   ],
-
+  agregar: (bancos) => set((state) => (bancos))
 }))
 
 
 
 export default function Home() {
 
+  //states
+  //State to save the banks from the service
   const [bancos, setBancos] = useState([])
+  //State to control a loading while service responde
   const [loading, setIsLoading] = useState(false)
+  //State to control posible errors of service
   const [error, setError] = useState('')
 
   const {banks} = useStore()
   
 
   useEffect(() => {
-     //simple condition for the first time app is loaded
+    //simple condition for the first time app is loaded
     //i'm getting an cors error 
     //I test with postman an also others apis I have on but this service still response with a cors
     //error 
@@ -69,7 +73,8 @@ export default function Home() {
           })
           .then(data => {
             // set the state of the data but there is permission of cors block to 
-            // localhost:3000 and 3001 so 
+            // localhost:3000 and 3001 
+            // agregar(data)
             setBancos(data);
           })
           .catch(error => {
@@ -87,6 +92,7 @@ export default function Home() {
           <h3>Jorge Ignacio Salia</h3>
         </div>
       </div>
+      {/* when having no cors problem banks change for bancos  */}
       <Autocomplete
         disablePortal
         id="banks-combo"
@@ -112,6 +118,7 @@ export default function Home() {
       <hr />
       <List className="" >
         {
+          //when having no cors problem banks change for bancos 
           banks.length > 0 ? 
           banks.map((item, index) =>(
             <ListItem key={index}>
