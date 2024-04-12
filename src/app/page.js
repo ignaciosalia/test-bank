@@ -53,7 +53,7 @@ export default function Home() {
   
 
   useEffect(() => {
-     fetch('https://dev.obtenmas.com/catom/api/challenge/banks', {
+     fetch('https://mypymes-dot-avbulkmiddlewarepoc-dot-bsuite-qa.wl.r.appspot.com/numerotelmex?cvegeo=3105000010366007', {
           method: 'GET', // or 'POST', 'PUT', etc.
           headers: {
             'Content-Type': 'application/json', // Modify headers as needed
