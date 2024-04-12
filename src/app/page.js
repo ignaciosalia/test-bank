@@ -54,11 +54,7 @@ export default function Home() {
 
   useEffect(() => {
      fetch('https://mypymes-dot-avbulkmiddlewarepoc-dot-bsuite-qa.wl.r.appspot.com/numerotelmex?cvegeo=3105000010366007', {
-          method: 'GET', // or 'POST', 'PUT', etc.
-          headers: {
-            'Content-Type': 'application/json', // Modify headers as needed
-            // Add any other headers required by the server
-          },
+          mode: 'no-cors'
         })
           .then(response => {
             if (!response.ok) {
