@@ -53,27 +53,28 @@ export default function Home() {
   
 
   useEffect(() => {
-    // fetch('https://dev.obtenmas.com/catom/api/challenge/banks', {
-    //     method: 'GET', // or 'POST', 'PUT', etc.
-    //     headers: {
-    //       'Content-Type': 'application/json', // Modify headers as needed
-    //       // Add any other headers required by the server
-    //     },
-    //   })
-    //     .then(response => {
-    //       if (!response.ok) {
-    //         throw new Error('Network response was not ok');
-    //       }
-    //       return response.json(); // Parse the response as JSON
-    //     })
-    //     .then(data => {
-    //       // set the state of the data but there is permission of cors block to 
-    //       // localhost:3000 and 3001 so 
-    //       //setBancos(data);
-    //     })
-    //     .catch(error => {
-    //       console.error('There was a problem with the fetch operation:', error);
-    //     });
+     fetch('https://dev.obtenmas.com/catom/api/challenge/banks', {
+          method: 'GET', // or 'POST', 'PUT', etc.
+          headers: {
+            'Content-Type': 'application/json', // Modify headers as needed
+            // Add any other headers required by the server
+          },
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json(); // Parse the response as JSON
+          })
+          .then(data => {
+            // set the state of the data but there is permission of cors block to 
+            // localhost:3000 and 3001 so 
+            //setBancos(data);
+            console.log(data)
+          })
+          .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+          });
   },[bancos])
 
   return (
